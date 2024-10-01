@@ -77,4 +77,5 @@ router.post('/sign-in', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router; // When you export router, you export all the functions that it is used in as well
+// Which is all the GET,POST,PUT & DELETE.
