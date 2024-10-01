@@ -1,11 +1,11 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv'); // allows you to have a dot.env file
 dotenv.config();
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const morgan = require('morgan');
-const session = require('express-session');
+const app = express(); // An instance of the express server
+const mongoose = require('mongoose'); // Translates JSON to BSON & vice versa
+const methodOverride = require('method-override'); // 
+const morgan = require('morgan'); 
+const session = require('express-session'); // stores session data
 
 const authController = require('./controllers/auth.js');
 
@@ -17,7 +17,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // How to read an encoded URL
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
 app.use(
