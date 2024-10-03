@@ -11,8 +11,10 @@ const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const applicationsController = require('./controllers/applications.js');
 const authController = require('./controllers/auth.js');
+const path = require('path');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
+
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -23,6 +25,7 @@ mongoose.connection.on('connected', () => {
 app.use(express.urlencoded({ extended: false })); // How to read an encoded URL
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public'))); // This is for styling
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
